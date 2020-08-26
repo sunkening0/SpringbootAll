@@ -1,0 +1,4 @@
+
+shiro:
+  loginUrl: "xxx"  #认证不通过的页面
+  UnauthorizedUrl: "xxx"  #授权不通过的跳转页面
