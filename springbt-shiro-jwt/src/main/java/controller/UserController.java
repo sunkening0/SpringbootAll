@@ -3,6 +3,7 @@ package controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import common.BaseDto;
+import common.Constant;
 import common.ResponseBean;
 import exception.CustomException;
 import exception.CustomUnauthorizedException;
@@ -39,6 +40,9 @@ public class UserController {
 
     @Autowired
     private UserUtil userUtil;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @Autowired
     private IUserService userService;
@@ -113,14 +117,14 @@ public class UserController {
         // 因为密码加密是以帐号+密码的形式进行加密的，所以解密后的对比是帐号+密码
         if (key.equals(userDto.getAccount() + userDto.getPassword())) {
             // 清除可能存在的Shiro权限信息缓存
-            if (JedisUtil.exists(Constant.PREFIX_SHIRO_CACHE + userDto.getAccount())) {
+            /*if (JedisUtil.exists(Constant.PREFIX_SHIRO_CACHE + userDto.getAccount())) {
                 JedisUtil.delKey(Constant.PREFIX_SHIRO_CACHE + userDto.getAccount());
-            }
+            }*/
             // 设置RefreshToken，时间戳为当前时间戳，直接设置即可(不用先删后设，会覆盖已有的RefreshToken)
             String currentTimeMillis = String.valueOf(System.currentTimeMillis());
-            JedisUtil.setObject(Constant.PREFIX_SHIRO_REFRESH_TOKEN + userDto.getAccount(), currentTimeMillis, Integer.parseInt(refreshTokenExpireTime));
+            //JedisUtil.setObject(Constant.PREFIX_SHIRO_REFRESH_TOKEN + userDto.getAccount(), currentTimeMillis, Integer.parseInt(refreshTokenExpireTime));
             // 从Header中Authorization返回AccessToken，时间戳为当前时间戳
-            String token = JwtUtil.sign(userDto.getAccount(), currentTimeMillis);
+            String token = jwtUtil.sign(userDto.getAccount(), currentTimeMillis);
             httpServletResponse.setHeader("Authorization", token);
             httpServletResponse.setHeader("Access-Control-Expose-Headers", "Authorization");
             return new ResponseBean(HttpStatus.OK.value(), "登录成功(Login Success.)", null);
@@ -256,7 +260,7 @@ public class UserController {
     /**
      * 剔除在线用户
      */
-    @DeleteMapping("/online/{id}")
+    /*@DeleteMapping("/online/{id}")
     @RequiresPermissions(logical = Logical.AND, value = {"user:edit"})
     public ResponseBean deleteOnline(@PathVariable("id") Integer id) {
         UserDto userDto = userService.selectByPrimaryKey(id);
@@ -266,5 +270,5 @@ public class UserController {
             }
         }
         throw new CustomException("剔除失败，Account不存在(Deletion Failed. Account does not exist.)");
-    }
+    }*/
 }
