@@ -46,7 +46,7 @@ public class JwtUtil {
     /**
      * 校验token是否正确
      */
-    public static boolean verify(String token) {
+    public boolean verify(String token) {
         try {
             // 帐号加JWT私钥解密
             String secret = getClaim(token, "account") + Base64ConvertUtil.decode(encryptJWTKey);
@@ -63,7 +63,7 @@ public class JwtUtil {
     /**
      * 获得Token中的信息无需secret解密也能获得
      */
-    public static String getClaim(String token, String claim) {
+    public String getClaim(String token, String claim) {
         try {
             DecodedJWT jwt = JWT.decode(token);
             // 只能输出String类型，如果是其他类型返回null
@@ -77,7 +77,7 @@ public class JwtUtil {
     /**
      * 生成签名
      */
-    public static String sign(String account, String currentTimeMillis) {
+    public String sign(String account, String currentTimeMillis) {
         try {
             // 帐号加JWT私钥加密
             String secret = account + Base64ConvertUtil.decode(encryptJWTKey);
@@ -173,7 +173,7 @@ public class JwtUtil {
      * @param token
      * @return
      */
-    private Boolean isTokenExpired(String token) {
+    public Boolean isTokenExpired(String token) {
         final Date expiration = getExpirationDateFromToken(token);
         return expiration.before(new Date());
     }

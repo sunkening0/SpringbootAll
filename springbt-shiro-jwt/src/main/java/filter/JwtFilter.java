@@ -2,16 +2,17 @@ package filter;
 
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
-import entity.JwtToken;
+import common.JwtToken;
+import common.ResponseBean;
 import exception.CustomException;
-import org.apache.logging.log4j.util.PropertiesUtil;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
+import utils.JsonConvertUtil;
 import utils.JwtUtil;
+import utils.SpringUtil;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -26,7 +27,7 @@ import java.io.PrintWriter;
 public class JwtFilter extends BasicHttpAuthenticationFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
-    private JwtUtil jwtUtil = ApplicationContext.
+    private JwtUtil jwtUtil = SpringUtil.getObject(JwtUtil.class);
 
     /* 1. 返回true，shiro就直接允许访问url
      * 2. 返回false，shiro才会根据onAccessDenied的方法的返回值决定是否允许访问url
@@ -47,12 +48,17 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
                     // 该异常为JWT的AccessToken认证失败(Token或者密钥不正确)
                     msg = "Token或者密钥不正确(" + throwable.getMessage() + ")";
                 } else if (throwable instanceof TokenExpiredException) {
-                    // 该异常为JWT的AccessToken已过期，判断RefreshToken未过期就进行AccessToken刷新
-                    if (JwtUtil.refreshToken(this.getAuthzHeader(request))) {
+                    //更新token过期时间
+                    String newToken = jwtUtil.refreshToken(this.getAuthzHeader(request));
+                    HttpServletResponse httpServletResponse = WebUtils.toHttp(response);
+                    httpServletResponse.setHeader("Authorization", newToken);
+                    httpServletResponse.setHeader("Access-Control-Expose-Headers", "Authorization");
+                    return true;
+                    /*if (jwtUtil.refreshToken(this.getAuthzHeader(request))) {
                         return true;
                     } else {
                         msg = "Token已过期(" + throwable.getMessage() + ")";
-                    }
+                    }*/
                 } else {
                     // 应用异常不为空
                     if (throwable != null) {

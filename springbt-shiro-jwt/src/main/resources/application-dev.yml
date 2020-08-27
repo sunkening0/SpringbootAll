@@ -2,3 +2,7 @@
 shiro:
   loginUrl: "xxx"  #认证不通过的页面
   UnauthorizedUrl: "xxx"  #授权不通过的跳转页面
+
+encryptAESKey: V2FuZzkyNjQ1NGRTQkFQSUpXVA==  # AES密码加密私钥(Base64加密)
+encryptJWTKey: U0JBUElKV1RkV2FuZzkyNjQ1NA==  # JWT认证加密私钥(Base64加密)
+accessTokenExpireTime: 300  # AccessToken过期时间-5分钟-5*60(秒为单位)
