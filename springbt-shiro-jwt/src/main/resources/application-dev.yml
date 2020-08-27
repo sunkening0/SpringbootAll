@@ -5,4 +5,10 @@ shiro:
 
 encryptAESKey: V2FuZzkyNjQ1NGRTQkFQSUpXVA==  # AES密码加密私钥(Base64加密)
 encryptJWTKey: U0JBUElKV1RkV2FuZzkyNjQ1NA==  # JWT认证加密私钥(Base64加密)
-accessTokenExpireTime: 300  # AccessToken过期时间-5分钟-5*60(秒为单位)
+accessTokenExpireTime: 3000  # AccessToken过期时间-5分钟-5*60(秒为单位)
+
+mybatis:
+  # Mybatis配置Mapper路径
+  mapper-locations: classpath:mapper/*.xml
+  # Mybatis配置Model类对应
+  type-aliases-package: com.keelin.model
