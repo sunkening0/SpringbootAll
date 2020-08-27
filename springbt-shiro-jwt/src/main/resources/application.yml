@@ -1,62 +1,7 @@
-# Tomcat
-server:
-  tomcat:
-    uri-encoding: UTF-8
-    max-threads: 1000
-    min-spare-threads: 30
-  #tomcat启动的端口
-  port: 8081
-  connection-timeout: 5000
-  servlet:
-    #tomcat访问路径，类似tomcat/webapps下的项目名称
-    context-path: /jwt
-
 spring:
   profiles:
     # 运行环境 dev|test|prod,根据active动态加载application-active.yml配置文件
     active: dev
-  # jackson时间格式化
-  jackson:
-    time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
-  servlet:
-    multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
-      enabled: true
-  mvc:
-    throw-exception-if-no-handler-found: true
-    static-path-pattern: /**
-    view:
-      prefix: classpath:/templates/
-      suffix: .html
-  resources:
-    add-mappings: false
-  main:
-    allow-bean-definition-overriding: true
-
-  datasource:
-    name: ShiroJwt
-    url: jdbc:mysql://127.0.0.1:3306/shirojwt?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
-    username: root
-    password: 1234
-    # 使用Druid数据源
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    druid:
-      filters: stat
-      maxActive: 20
-      initialSize: 1
-      maxWait: 60000
-      minIdle: 1
-      timeBetweenEvictionRunsMillis: 60000
-      minEvictableIdleTimeMillis: 300000
-      validationQuery: select 'x'
-      testWhileIdle: true
-      testOnBorrow: false
-      testOnReturn: false
-      poolPreparedStatements: true
-      maxOpenPreparedStatements: 20
 
 
 

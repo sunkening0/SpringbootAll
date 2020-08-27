@@ -12,6 +12,7 @@
         <module>springbt-security</module>
         <module>springbt-shiro-jwt</module>
         <module>mybatis-generator</module>
+        <module>springbt-admin</module>
     </modules>
 
     <parent>
