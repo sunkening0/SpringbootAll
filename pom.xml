@@ -13,6 +13,8 @@
         <module>springbt-shiro-jwt</module>
         <module>mybatis-generator</module>
         <module>springbt-admin</module>
+        <module>springbt-sso-jwt</module>
+        <module>springbt-elasticsearch</module>
     </modules>
 
     <parent>
