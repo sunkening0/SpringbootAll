@@ -11,5 +11,4 @@
     <description>整合ElasticSearch</description>
     <artifactId>elasticsearch</artifactId>
 
-
 </project>
