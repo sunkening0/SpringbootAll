@@ -17,6 +17,7 @@
         <module>springbt-elasticsearch</module>
         <module>springbt-elastic-starter</module>
         <module>springbt-md5-starter</module>
+        <module>test-uidgenerator-starter</module>
     </modules>
 
     <parent>
