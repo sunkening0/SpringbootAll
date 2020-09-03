@@ -1,6 +1,7 @@
 server:
   port: 6325
 
+
 spring:
   elasticsearch:
     jest:
