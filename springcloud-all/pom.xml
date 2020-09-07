@@ -12,8 +12,9 @@
     <artifactId>SpringcloudAll</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>eurakeserver</module>
-        <module>eurakeclient</module>
+        <module>eurake-server</module>
+        <module>eurake-client</module>
+        <module>ribbon-client</module>
     </modules>
 
     <properties>
