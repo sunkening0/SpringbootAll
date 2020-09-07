@@ -744,5 +744,4 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 /Springcloud-all.iml
-/.idea/
-/.idea/
+.idea/
