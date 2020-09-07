@@ -15,10 +15,9 @@
         <module>springbt-admin</module>
         <module>springbt-sso-jwt</module>
         <module>springbt-elasticsearch</module>
-        <module>springbt-elastic-starter</module>
         <module>springbt-md5-starter</module>
         <module>test-uidgenerator-starter</module>
-        <module>springcloud-eureka</module>
+        <module>springcloud-all</module>
     </modules>
 
     <parent>
