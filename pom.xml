@@ -18,6 +18,7 @@
         <module>springbt-elastic-starter</module>
         <module>springbt-md5-starter</module>
         <module>test-uidgenerator-starter</module>
+        <module>springcloud-eureka</module>
     </modules>
 
     <parent>
