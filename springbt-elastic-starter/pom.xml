@@ -8,13 +8,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
-    <description>基于Spring Security Oauth2的SSO单点登录+JWT权限控制实践</description>
-    <modules>
-        <module>ssoserver</module>
-    </modules>
-    <artifactId>ssojwt</artifactId>
 
+    <artifactId>elasticstarter</artifactId>
 
 
 </project>
