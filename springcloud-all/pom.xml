@@ -15,6 +15,7 @@
         <module>eurake-server</module>
         <module>eurake-client</module>
         <module>ribbon-client</module>
+        <module>feign-client</module>
     </modules>
 
     <properties>
