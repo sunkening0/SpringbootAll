@@ -1,4 +1,4 @@
-package com.keelin.config;
+package com.keelin;
 
 import com.keelin.service.Md5Service;
 import org.springframework.context.annotation.Bean;

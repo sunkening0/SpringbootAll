@@ -1,4 +1,4 @@
-package com.keelin.config;
+package com.keelin;
 
 import com.keelin.filter.JwtFilter;
 import com.keelin.realm.UserRealm;

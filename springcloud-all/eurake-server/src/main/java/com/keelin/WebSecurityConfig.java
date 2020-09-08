@@ -1,18 +1,23 @@
-package com.keelin.config;
+package com.keelin;
 
-import org.springframework.core.annotation.Order;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @EnableWebSecurity
-@Order(0)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //为了方便  放开所有请求
-        http.authorizeRequests().anyRequest().permitAll()
-                .and().csrf().disable();
+        http.csrf().disable();
+        http.authorizeRequests()
+                .antMatchers("/css/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .and()
+                .httpBasic();
+        super.configure(http);
     }
 }

@@ -1,4 +1,4 @@
-package com.keelin.config;
+package com.keelin;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
