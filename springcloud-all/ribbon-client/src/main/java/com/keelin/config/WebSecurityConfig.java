@@ -1,4 +1,4 @@
-package com.keelin;
+package com.keelin.config;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
