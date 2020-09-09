@@ -1,4 +1,4 @@
-package com.keelin;
+package com.keelin.config;
 
 import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.ApplicationListener;

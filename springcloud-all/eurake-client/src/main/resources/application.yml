@@ -1,5 +1,5 @@
 server:
-  port: 8802   # 服务端口号
+  port: 8801   # 服务端口号
 spring:
   application:
     name: eurkaclient     # 服务名称
