@@ -17,6 +17,7 @@
         <module>ribbon-client</module>
         <module>feign-client</module>
         <module>turbine</module>
+        <module>zuul</module>
     </modules>
 
     <properties>
