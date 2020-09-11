@@ -1,0 +1,19 @@
+# bootstrap.properties为默认文件名
+spring:
+  cloud:
+    config:
+      name: keelin-config
+      profile: dev
+      uri: http://localhost:8886/
+      label: master
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://keelin:keelin@localhost:8881/eureka/   # 注意在高可用的时候需要将注册中心配置移到该文件中，在application.yml中将会读取不到配置
+
+#添加到监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health # SpringCloud暴露了一个接口 /refresh 来给我们去刷新配置,但是SpringCloud 2.0.0以后,有了改变  现在的地址也不是/refresh了,而是/actuator/refresh

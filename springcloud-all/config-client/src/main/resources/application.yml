@@ -1,0 +1,12 @@
+server:
+  port: 8807   # 服务端口号
+spring:
+  application:
+    name: configclient     # 服务名称
+  security:
+    basic:
+      enabled: true
+    user:
+      name: keelin
+      password: ${REGISTRY_SERVER_PASSWORD:keelin}
+

@@ -13,10 +13,10 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/lovinstudio/lovincloud  # 用git作为配置文件管理中心，还有svn和本地文件系统两种
-          search-paths: config-repo
-          # username: #如果是私人仓库，还需要配置用户名，公共仓库可以省略
-          # password: #如果是私人仓库，还需要配置密码，公共仓库可以省略
+          uri: https://github.com/sunkening0/SpringbootAll  # 用git作为配置文件管理中心，还有svn和本地文件系统两种
+          search-paths: /springcloud-all/config-repo
+          username: 812610493@qq.com
+          password: 6511978abc
       label: master
 
 # 本地配置
