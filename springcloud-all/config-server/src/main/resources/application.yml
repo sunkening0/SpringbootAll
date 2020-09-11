@@ -1,0 +1,54 @@
+server:
+  port: 8886   # 服务端口号
+spring:
+  application:
+    name: configserver     # 服务名称
+  security:
+    basic:
+      enabled: true
+    user:
+      name: keelin
+      password: ${REGISTRY_SERVER_PASSWORD:keelin}
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/lovinstudio/lovincloud  # 用git作为配置文件管理中心，还有svn和本地文件系统两种
+          search-paths: config-repo
+          # username: #如果是私人仓库，还需要配置用户名，公共仓库可以省略
+          # password: #如果是私人仓库，还需要配置密码，公共仓库可以省略
+      label: master
+
+# 本地配置
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          searchLocations: file:D:\\config  #classpath:/config
+#  profiles:
+#    active: native  #native
+
+# svn配置
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        svn:
+#          uri: http://192.168.0.6/svn/repo/config-repo
+#          username: username
+#          password: password
+#        default-label: trunk
+#  profiles:
+#    active: subversion  #这里需要显式声明为subversion
+
+#  <!--svn配置 需要引入-->
+#  <dependency>
+#  <groupId>org.tmatesoft.svnkit</groupId>
+#  <artifactId>svnkit</artifactId>
+#  </dependency>
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://keelin:keelin@localhost:8881/eureka/   # 注册到的eureka服务地址
