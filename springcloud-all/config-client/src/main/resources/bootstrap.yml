@@ -4,8 +4,15 @@ spring:
     config:
       name: keelin-config
       profile: dev
-      uri: http://localhost:8886/
-      label: master
+      #uri: http://localhost:8886/
+      #label: master
+      discovery:
+        enabled: true
+        service-id: configserver
+    bus:
+      trace:
+        enabled: true
+
 eureka:
   client:
     serviceUrl:
