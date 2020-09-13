@@ -32,6 +32,7 @@ public class RibbonClientApplication {
         return new RestTemplate();
     }
 
+
     @Bean
     public ServletRegistrationBean getServlet(){
         HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
