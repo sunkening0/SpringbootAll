@@ -54,7 +54,6 @@ spring:
 #  <artifactId>svnkit</artifactId>
 #  </dependency>
 
-
 eureka:
   client:
     serviceUrl:
