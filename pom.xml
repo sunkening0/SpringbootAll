@@ -19,6 +19,7 @@
         <module>test-uidgenerator-starter</module>
         <module>springcloud-all</module>
         <module>generation</module>
+        <module>spring-ioc-demo</module>
     </modules>
 
     <parent>
