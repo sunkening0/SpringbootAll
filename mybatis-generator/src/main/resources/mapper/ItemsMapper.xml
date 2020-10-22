@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.keelin.mapper.ItemsMapper" >
+  <resultMap id="BaseResultMap" type="com.keelin.model.Items" >
+    <result column="task_id" property="taskId" jdbcType="VARCHAR" />
+    <result column="wsid" property="wsid" jdbcType="VARCHAR" />
+    <result column="handle_netuserid" property="handleNetuserid" jdbcType="VARCHAR" />
+    <result column="handle_result" property="handleResult" jdbcType="VARCHAR" />
+    <result column="task_key" property="taskKey" jdbcType="VARCHAR" />
+    <result column="handle_company" property="handleCompany" jdbcType="VARCHAR" />
+    <result column="handle_group_name" property="handleGroupName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="handle_comment" property="handleComment" jdbcType="VARCHAR" />
+    <result column="handle_username" property="handleUsername" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    task_id, wsid, handle_netuserid, handle_result, task_key, handle_company, handle_group_name, 
+    create_time, handle_comment, handle_username
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.keelin.model.ItemsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ws_form_softwareNetTestApply_netReview
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.keelin.model.ItemsExample" >
+    delete from ws_form_softwareNetTestApply_netReview
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.keelin.model.Items" >
+    insert into ws_form_softwareNetTestApply_netReview (task_id, wsid, handle_netuserid, 
+      handle_result, task_key, handle_company, 
+      handle_group_name, create_time, handle_comment, 
+      handle_username)
+    values (#{taskId,jdbcType=VARCHAR}, #{wsid,jdbcType=VARCHAR}, #{handleNetuserid,jdbcType=VARCHAR}, 
+      #{handleResult,jdbcType=VARCHAR}, #{taskKey,jdbcType=VARCHAR}, #{handleCompany,jdbcType=VARCHAR}, 
+      #{handleGroupName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{handleComment,jdbcType=VARCHAR}, 
+      #{handleUsername,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.keelin.model.Items" >
+    insert into ws_form_softwareNetTestApply_netReview
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="wsid != null" >
+        wsid,
+      </if>
+      <if test="handleNetuserid != null" >
+        handle_netuserid,
+      </if>
+      <if test="handleResult != null" >
+        handle_result,
+      </if>
+      <if test="taskKey != null" >
+        task_key,
+      </if>
+      <if test="handleCompany != null" >
+        handle_company,
+      </if>
+      <if test="handleGroupName != null" >
+        handle_group_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="handleComment != null" >
+        handle_comment,
+      </if>
+      <if test="handleUsername != null" >
+        handle_username,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="wsid != null" >
+        #{wsid,jdbcType=VARCHAR},
+      </if>
+      <if test="handleNetuserid != null" >
+        #{handleNetuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="handleResult != null" >
+        #{handleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="taskKey != null" >
+        #{taskKey,jdbcType=VARCHAR},
+      </if>
+      <if test="handleCompany != null" >
+        #{handleCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="handleGroupName != null" >
+        #{handleGroupName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleComment != null" >
+        #{handleComment,jdbcType=VARCHAR},
+      </if>
+      <if test="handleUsername != null" >
+        #{handleUsername,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.keelin.model.ItemsExample" resultType="java.lang.Integer" >
+    select count(*) from ws_form_softwareNetTestApply_netReview
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ws_form_softwareNetTestApply_netReview
+    <set >
+      <if test="record.taskId != null" >
+        task_id = #{record.taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wsid != null" >
+        wsid = #{record.wsid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handleNetuserid != null" >
+        handle_netuserid = #{record.handleNetuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handleResult != null" >
+        handle_result = #{record.handleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskKey != null" >
+        task_key = #{record.taskKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handleCompany != null" >
+        handle_company = #{record.handleCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handleGroupName != null" >
+        handle_group_name = #{record.handleGroupName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.handleComment != null" >
+        handle_comment = #{record.handleComment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handleUsername != null" >
+        handle_username = #{record.handleUsername,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ws_form_softwareNetTestApply_netReview
+    set task_id = #{record.taskId,jdbcType=VARCHAR},
+      wsid = #{record.wsid,jdbcType=VARCHAR},
+      handle_netuserid = #{record.handleNetuserid,jdbcType=VARCHAR},
+      handle_result = #{record.handleResult,jdbcType=VARCHAR},
+      task_key = #{record.taskKey,jdbcType=VARCHAR},
+      handle_company = #{record.handleCompany,jdbcType=VARCHAR},
+      handle_group_name = #{record.handleGroupName,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      handle_comment = #{record.handleComment,jdbcType=VARCHAR},
+      handle_username = #{record.handleUsername,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

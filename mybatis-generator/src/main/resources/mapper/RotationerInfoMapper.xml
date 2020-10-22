@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.keelin.mapper.RotationerInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.keelin.model.RotationerInfo" >
+    <result column="id" property="id" jdbcType="BIGINT" />
+    <result column="prov_name" property="provName" jdbcType="VARCHAR" />
+    <result column="prov_code" property="provCode" jdbcType="VARCHAR" />
+    <result column="rotation_interval" property="rotationInterval" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="rotation_date" property="rotationDate" jdbcType="DATE" />
+    <result column="is_white" property="isWhite" jdbcType="INTEGER" />
+    <result column="is_leader" property="isLeader" jdbcType="INTEGER" />
+    <result column="phone_number_backup" property="phoneNumberBackup" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="op_date" property="opDate" jdbcType="TIMESTAMP" />
+    <result column="crt_date" property="crtDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, prov_name, prov_code, rotation_interval, position, name, phone_number, rotation_date, 
+    is_white, is_leader, phone_number_backup, is_delete, op_date, crt_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.keelin.model.RotationerInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from rotationer_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.keelin.model.RotationerInfoExample" >
+    delete from rotationer_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.keelin.model.RotationerInfo" >
+    insert into rotationer_info (id, prov_name, prov_code, 
+      rotation_interval, position, name, 
+      phone_number, rotation_date, is_white, 
+      is_leader, phone_number_backup, is_delete, 
+      op_date, crt_date)
+    values (#{id,jdbcType=BIGINT}, #{provName,jdbcType=VARCHAR}, #{provCode,jdbcType=VARCHAR}, 
+      #{rotationInterval,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{phoneNumber,jdbcType=VARCHAR}, #{rotationDate,jdbcType=DATE}, #{isWhite,jdbcType=INTEGER}, 
+      #{isLeader,jdbcType=INTEGER}, #{phoneNumberBackup,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}, 
+      #{opDate,jdbcType=TIMESTAMP}, #{crtDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.keelin.model.RotationerInfo" >
+    insert into rotationer_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="provName != null" >
+        prov_name,
+      </if>
+      <if test="provCode != null" >
+        prov_code,
+      </if>
+      <if test="rotationInterval != null" >
+        rotation_interval,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="rotationDate != null" >
+        rotation_date,
+      </if>
+      <if test="isWhite != null" >
+        is_white,
+      </if>
+      <if test="isLeader != null" >
+        is_leader,
+      </if>
+      <if test="phoneNumberBackup != null" >
+        phone_number_backup,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="opDate != null" >
+        op_date,
+      </if>
+      <if test="crtDate != null" >
+        crt_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="provName != null" >
+        #{provName,jdbcType=VARCHAR},
+      </if>
+      <if test="provCode != null" >
+        #{provCode,jdbcType=VARCHAR},
+      </if>
+      <if test="rotationInterval != null" >
+        #{rotationInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rotationDate != null" >
+        #{rotationDate,jdbcType=DATE},
+      </if>
+      <if test="isWhite != null" >
+        #{isWhite,jdbcType=INTEGER},
+      </if>
+      <if test="isLeader != null" >
+        #{isLeader,jdbcType=INTEGER},
+      </if>
+      <if test="phoneNumberBackup != null" >
+        #{phoneNumberBackup,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="opDate != null" >
+        #{opDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtDate != null" >
+        #{crtDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.keelin.model.RotationerInfoExample" resultType="java.lang.Integer" >
+    select count(*) from rotationer_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update rotationer_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.provName != null" >
+        prov_name = #{record.provName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provCode != null" >
+        prov_code = #{record.provCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rotationInterval != null" >
+        rotation_interval = #{record.rotationInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="record.position != null" >
+        position = #{record.position,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneNumber != null" >
+        phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rotationDate != null" >
+        rotation_date = #{record.rotationDate,jdbcType=DATE},
+      </if>
+      <if test="record.isWhite != null" >
+        is_white = #{record.isWhite,jdbcType=INTEGER},
+      </if>
+      <if test="record.isLeader != null" >
+        is_leader = #{record.isLeader,jdbcType=INTEGER},
+      </if>
+      <if test="record.phoneNumberBackup != null" >
+        phone_number_backup = #{record.phoneNumberBackup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.opDate != null" >
+        op_date = #{record.opDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.crtDate != null" >
+        crt_date = #{record.crtDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update rotationer_info
+    set id = #{record.id,jdbcType=BIGINT},
+      prov_name = #{record.provName,jdbcType=VARCHAR},
+      prov_code = #{record.provCode,jdbcType=VARCHAR},
+      rotation_interval = #{record.rotationInterval,jdbcType=VARCHAR},
+      position = #{record.position,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
+      rotation_date = #{record.rotationDate,jdbcType=DATE},
+      is_white = #{record.isWhite,jdbcType=INTEGER},
+      is_leader = #{record.isLeader,jdbcType=INTEGER},
+      phone_number_backup = #{record.phoneNumberBackup,jdbcType=VARCHAR},
+      is_delete = #{record.isDelete,jdbcType=INTEGER},
+      op_date = #{record.opDate,jdbcType=TIMESTAMP},
+      crt_date = #{record.crtDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

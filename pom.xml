@@ -18,6 +18,7 @@
         <module>springbt-md5-starter</module>
         <module>test-uidgenerator-starter</module>
         <module>springcloud-all</module>
+        <module>generation</module>
     </modules>
 
     <parent>

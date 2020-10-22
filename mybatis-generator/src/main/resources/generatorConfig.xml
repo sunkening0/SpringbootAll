@@ -37,7 +37,7 @@
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
 
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://10.15.2.48:3306/smart_ws_mgmt?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;useSSL=false"
+                        connectionURL="jdbc:mysql://10.15.2.49:3306/eoms_rotation?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;useSSL=false"
                         userId="root"
                         password="mysql123">
         </jdbcConnection>
@@ -112,7 +112,8 @@
 
         -->
 
-        <table tableName="ws_form_softwareNetTestApply_netReview"></table>
+        <table tableName="rotationer_info"></table>
+        <table tableName="important_incident_info"></table>
 
     </context>
 
