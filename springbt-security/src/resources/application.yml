@@ -11,8 +11,48 @@ server:
     #tomcat访问路径，类似tomcat/webapps下的项目名称
     context-path: /
 
-#spring:
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: spring_security_jwt
+    url: jdbc:mysql://127.0.0.1:3306/spring_security_jwt?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 1234
+    # 使用Druid数据源
+#    type: com.alibaba.druid.pool.DruidDataSource
+
+#    druid:
+#      filters: stat
+#      maxActive: 20
+#      initialSize: 1
+#      maxWait: 60000
+#      minIdle: 1
+#      timeBetweenEvictionRunsMillis: 60000
+#      minEvictableIdleTimeMillis: 300000
+#      validationQuery: select 'x'
+#      testWhileIdle: true
+#      testOnBorrow: false
+#      testOnReturn: false
+#      poolPreparedStatements: true
+#      maxOpenPreparedStatements: 20
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  jackson:
+    serialization:
+      indent_output: true
+
+  #spring:
 #  security:
 #    user:
 #      name: skn
 #      password: 123
+
+logging:
+  level:
+    org:
+      springframework:
+        security: info
